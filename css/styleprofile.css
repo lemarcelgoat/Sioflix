@@ -1,0 +1,96 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgba(26, 26, 26);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: gray;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border: 2px solid white;
+    border-radius: 8px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.8s;
+}
+
+.tabs button.active {
+    color: #0068ad;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.auth-form.hidden {
+    display: none;
+}
+
+h2 { 
+    margin-bottom: 1rem; 
+    color: #333; 
+}
+
+label { 
+    margin-top: 10px; 
+    font-size: 0.9rem; 
+    color: white; 
+}
+
+.input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    flex: 2;
+    background-color: #0068ad;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-reset {
+    flex: 1;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
