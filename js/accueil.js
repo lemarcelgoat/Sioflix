@@ -1,0 +1,125 @@
+let catalogue = document.querySelector("#catalogue_cont");
+let btnmore = document.querySelector("#button_more");
+const buttons = document.querySelectorAll(".btn");
+const slides = document.querySelectorAll(".imgFilm");
+const infos = document.querySelectorAll(".infofilm");
+const tracks = document.querySelectorAll(".carousel-track");
+const indicators = document.querySelectorAll(".indicator");
+
+catalogue.addEventListener("click", affichercatalogue);
+
+function affichercatalogue() {
+  if (liste_catalogue.style.display === "block") {
+    liste_catalogue.style.display = "none";
+  } 
+  else {
+    liste_catalogue.style.display = "block";
+  }
+}
+
+btnmore.addEventListener("click", afficherWrapper);
+
+function afficherWrapper() {
+  document.querySelector("#wrapper").style.display = "flex"; 
+}
+
+function updateIndicators(index) {
+  indicators.forEach((indicator, i) => {
+    if (i === index) {
+      indicator.classList.add("active");
+    } else {
+      indicator.classList.remove("active");
+    }
+  });
+}
+
+
+function goToSlide(index) {
+
+  const currentSlide = document.querySelector(".imgFilm.active");
+  const currentInfo = document.querySelector(".infofilm.active");
+  
+  if (currentSlide) currentSlide.classList.remove("active");
+  if (currentInfo) currentInfo.classList.remove("active");
+  
+  slides[index].classList.add("active");
+  infos[index].classList.add("active");
+  
+  updateIndicators(index);
+}
+
+
+indicators.forEach((indicator, index) => {
+  indicator.addEventListener("click", () => {
+    goToSlide(index);
+  });
+});
+
+buttons.forEach((button) => {
+  button.addEventListener("click", GrandCar)
+});
+
+function GrandCar(e) {
+  const calcNextSlide = e.target.classList.contains("next") ? 1 : -1;
+  const Active = document.querySelectorAll(".active");
+  const slideActive = Active[0];
+  const infoActive = Active[1];
+
+  newIndex = calcNextSlide + [...slides].indexOf(slideActive);
+
+  if (newIndex < 0) newIndex = [...slides].length - 1;
+  if (newIndex >= [...slides].length) newIndex = 0;
+  
+  slides[newIndex].classList.add("active");
+  slideActive.classList.remove("active");
+
+  newIndexInfo = calcNextSlide + [...infos].indexOf(infoActive);
+
+  if (newIndexInfo < 0) newIndexInfo = [...infos].length - 1;
+  if (newIndexInfo >= [...infos].length) newIndexInfo = 0;
+  
+  infos[newIndexInfo].classList.add("active");
+  infoActive.classList.remove("active");
+  
+  updateIndicators(newIndex);
+}
+
+document.querySelectorAll(".carousel-wrapper").forEach((wrapper, index) => {
+    const track = wrapper.querySelector(".carousel-track");
+    const nextBtn = wrapper.querySelector(".next");
+    const prevBtn = wrapper.querySelector(".prev");
+    
+    let currentPosition = 0;
+
+    nextBtn.addEventListener("click", fctSuivant)  
+
+    function fctSuivant() {       
+        const itemWidth = track.querySelector("img").offsetWidth + 15; 
+        const visibleItems = window.innerWidth < 768 ? 2 : 5;
+        const maxScroll = track.children.length - visibleItems;
+
+        if (currentPosition < maxScroll) {
+            currentPosition += visibleItems;
+            if (currentPosition > maxScroll) currentPosition = maxScroll;
+        } else {
+            currentPosition = 0; 
+        }
+        track.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
+    }
+
+    prevBtn.addEventListener("click", fctPrecedent) 
+    
+    function fctPrecedent() {
+        const itemWidth = track.querySelector("img").offsetWidth + 15;
+        const visibleItems = window.innerWidth < 768 ? 2 : 5;
+
+        if (currentPosition > 0) {
+            currentPosition -= visibleItems;
+            if (currentPosition < 0) currentPosition = 0;
+        } else {
+            const maxScroll = track.children.length - visibleItems;
+            currentPosition = maxScroll; 
+        }
+        track.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
+    }
+});
