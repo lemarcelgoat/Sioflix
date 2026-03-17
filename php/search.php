@@ -23,9 +23,9 @@
     </style>
 </head>
 <body>
-    <a href="home.html">
-        <img id="logo" src="image/logo.png" alt="Logo">
+    <a href="index.php">
+        <img id="logo" src="../img/logo.png" alt="Logo">
     </a>
-    <img id="search" src="image/search.png">
+    <img id="search" src="../img/search.png">
 </body>
 </html>
