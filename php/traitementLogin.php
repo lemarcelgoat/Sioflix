@@ -1,19 +1,21 @@
 <?php
-session_start();
 require_once 'bdd.php';
 
-$pseudo   = $_POST['pseudo'];
+$email   = $_POST['email'];
 $password = $_POST['password'];
 
-$stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE pseudo = ?");
-$stmt->execute([$pseudo]);
+$stmt = $bdd->prepare("SELECT * FROM user WHERE email = ?");
+$stmt->execute([$email]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user && password_verify($password, $user['password'])) {
+    session_start();
     $_SESSION['pseudo'] = $user['pseudo'];
-    header("Location: accueil.php");
+    header("Location: ../index.php");
+    die();
 } else {
-    echo "Pseudo ou mot de passe incorrect.";
+    echo "Email ou mot de passe incorrect.";
+    die();
 }
 exit();
 ?>
