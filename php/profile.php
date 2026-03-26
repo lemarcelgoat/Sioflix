@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div id="logo">
-            <a href="index.php"><img src="../img/logo.png" alt="logo" style="width: 100px;"></a>
+            <a href="../index.php"><img src="../img/logo.png" alt="logo" style="width: 100px;"></a>
         </div>
         <div class="tabs">
             <button id="show-login" class="active">Se connecter</button> 
