@@ -11,14 +11,21 @@
         <div id="logo">
             <a href="../index.php"><img src="../img/logo.png" alt="logo" style="width: 100px;"></a>
         </div>
+
+        <?php if (!empty($_GET['error'])): ?>
+            <div class="error-box">
+                <div class="error-icon">✕</div>
+                <div class="error-text"><?= htmlspecialchars($_GET['error']) ?></div>
+            </div>
+        <?php endif; ?>
+
         <div class="tabs">
-            <button id="show-login" class="active">Se connecter</button> 
-            <button id="show-signup">S'inscrire</button> 
+            <button id="show-login" class="active">Se connecter</button>
+            <button id="show-signup">S'inscrire</button>
         </div>
-      
+
         <form id="form_Connexion" action="traitementLogin.php" class="auth-form" method="post">
             <h2>Connexion</h2>
-            
             <label for="login-email">Email</label>
             <input type="text" id="login-email" class="input" name="email" placeholder="exemple@email.com" required>
             <label for="login-password">Mot de passe</label>
@@ -28,7 +35,7 @@
                 <input type="reset" value="Annuler" class="btn-reset">
             </div>
         </form>
-            
+
         <form id="form_Inscri" action="traitementInscri.php" class="auth-form hidden" method="post">
             <h2>Inscription</h2>
             <label for="pseudo">Pseudo</label>
@@ -45,6 +52,7 @@
             </div>
         </form>
     </div>
+
     <script src="../js/scriptform.js"></script>
 </body>
 </html>
