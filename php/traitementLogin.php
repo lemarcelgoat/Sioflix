@@ -16,7 +16,7 @@ if ($user && password_verify($password, $user['password'])) {
     header("Location: ../index.php");   
     exit();
 } else {
-    header("Location: profile.php?error=Email+ou+mot+de+passe+incorrect");
+    header("Location: profile.php?error=CI");
     exit();
 }
 ?>

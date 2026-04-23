@@ -119,4 +119,9 @@ document.querySelectorAll(".carousel-wrapper").forEach((wrapper) => {
         }
         track.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
     }
+    function toggleFav(btn, id) {
+        fetch('php/favori_toggle.php?id=' + id)
+            .then(r => r.json())
+            .then(data => btn.classList.toggle('on', data.favori));
+    }
 });

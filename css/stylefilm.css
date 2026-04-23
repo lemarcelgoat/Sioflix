@@ -1,0 +1,96 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #141414; color: #fff; font-family: 'Segoe UI', sans-serif; }
+
+        /* Header */
+        header { display:flex; justify-content:space-between; align-items:center; padding:18px 5%; background:rgba(0,0,0,.9); position:sticky; top:0; z-index:100; }
+        #logo img { height:40px; }
+        #menu { display:flex; align-items:center; gap:15px; border-radius:20px; background:rgba(66,52,52,.8); padding:5px 15px; }
+
+        /* Hero film */
+        .film-hero {
+            position: relative; min-height: 500px;
+            display: flex; align-items: flex-end;
+            padding: 60px 5% 40px;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            filter: brightness(.3);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 650px; }
+        .hero-content h1 { font-size: 3rem; font-weight: bold; margin-bottom: 12px; text-shadow: 0 2px 10px rgba(0,0,0,.8); }
+        .hero-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .badge {
+            padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: bold;
+            background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+        }
+        .badge.type { background: #e50914; border-color: #e50914; }
+        .genre-list { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .genre-tag { padding: 4px 12px; border-radius: 20px; font-size: 12px; border: 1px solid rgba(255,255,255,.25); color: #ccc; }
+
+        /* Boutons action */
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-watch {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #e50914; color: #fff; padding: 12px 28px;
+            border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 15px;
+            border: none; cursor: pointer; transition: background .2s;
+        }
+        .btn-watch:hover { background: #b0060f; }
+        .btn-fav {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,.1); color: #fff; padding: 12px 20px;
+            border-radius: 6px; font-size: 15px; border: 1.5px solid rgba(255,255,255,.3);
+            cursor: pointer; transition: .2s; font-family: inherit;
+        }
+        .btn-fav:hover { background: rgba(255,255,255,.2); }
+        .btn-fav.active { background: rgba(229,9,20,.2); border-color: #e50914; color: #e50914; }
+
+        /* Détails */
+        .film-details { padding: 40px 5%; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+        @media(max-width:700px){ .film-details { grid-template-columns: 1fr; } }
+
+        .film-poster img {
+            width: 100%; border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,.7);
+            max-width: 280px;
+        }
+        .film-poster-placeholder {
+            width: 100%; max-width: 280px; aspect-ratio: 2/3;
+            background: #1e1e1e; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 60px;
+        }
+
+        .film-info h2 { font-size: 1.4rem; color: #e50914; margin-bottom: 16px; }
+        .cast-grid { display: flex; flex-direction: column; gap: 8px; }
+        .cast-item {
+            display: flex; justify-content: space-between;
+            padding: 8px 12px; background: rgba(255,255,255,.05);
+            border-radius: 6px; font-size: 14px;
+        }
+        .cast-name { color: #fff; font-weight: 500; }
+        .cast-role { color: #aaa; }
+
+        /* Lecteur vidéo */
+        .video-section { padding: 0 5% 40px; }
+        .video-section h2 { font-size: 1.4rem; margin-bottom: 16px; }
+        .video-wrap {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            border-radius: 10px; overflow: hidden; background: #000;
+        }
+        .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+        .no-video { padding: 40px; text-align: center; color: #555; background: #1a1a1a; border-radius: 10px; }
+
+        /* Films similaires */
+        .similaires-section { padding: 0 5% 60px; }
+        .similaires-section h2 { font-size: 1.4rem; margin-bottom: 16px; }
+        .similaires-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+        .sim-card { border-radius: 6px; overflow: hidden; background: #1e1e1e; cursor: pointer; transition: transform .25s, box-shadow .25s; }
+        .sim-card:hover { transform: scale(1.06); box-shadow: 0 6px 24px rgba(0,0,0,.7); }
+        .sim-card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
+        .sim-card .sim-title { padding: 7px 10px; font-size: 12px; color: #ccc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        footer { text-align: center; padding: 30px; color: #555; font-size: 13px; }

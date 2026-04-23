@@ -18,7 +18,7 @@ if ($password !== $confirm) {
 $check = $bdd->prepare("SELECT id FROM user WHERE email = ?");
 $check->execute([$email]);
 if ($check->fetch()) {
-    header("Location: profile.php?error=Cet+email+est+déjà+utilisé");
+    header("Location: profile.php?error=EU");
     exit();
 }
 

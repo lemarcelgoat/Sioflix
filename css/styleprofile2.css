@@ -1,0 +1,64 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #141414; color: #fff; font-family: 'Segoe UI', sans-serif; min-height: 100vh; display: block; }
+
+        .profil-hero {
+            background: linear-gradient(to bottom, #000 0%, #141414 100%);
+            padding: 100px 5% 40px;
+            display: flex; align-items: center; gap: 30px;
+        }
+        .avatar {
+            width: 90px; height: 90px; border-radius: 50%;
+            background: #e50914; display: flex; align-items: center;
+            justify-content: center; font-size: 38px; flex-shrink: 0;
+        }
+        .profil-info h1 { font-size: 2rem; font-weight: bold; }
+        .profil-info p  { color: #aaa; font-size: 14px; margin-top: 6px; }
+        .btn-logout-profil {
+            margin-left: auto; background: transparent; border: 1.5px solid #e50914;
+            color: #e50914; padding: 9px 20px; border-radius: 6px;
+            text-decoration: none; font-size: 14px; white-space: nowrap;
+            transition: .2s;
+        }
+        .btn-logout-profil:hover { background: #e50914; color: #fff; }
+
+        .section { padding: 10px 5% 40px; }
+        .section h2 { font-size: 1.6rem; color: orangered; margin-bottom: 18px; }
+
+        .grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 14px;
+        }
+        .card-fav {
+            border-radius: 6px; overflow: hidden; background: #1e1e1e;
+            cursor: pointer; transition: transform .25s, box-shadow .25s;
+            position: relative;
+        }
+        .card-fav:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(0,0,0,.7); }
+        .card-fav img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
+        .card-fav .card-title { padding: 7px 10px; font-size: 12px; color: #ccc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .card-fav .remove-fav {
+            position: absolute; top: 6px; right: 6px;
+            background: rgba(229,9,20,.85); border: none; border-radius: 50%;
+            width: 26px; height: 26px; color: #fff; font-size: 13px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: .2s;
+        }
+        .card-fav .remove-fav:hover { background: #e50914; transform: scale(1.15); }
+
+        .histo-list { display: flex; flex-direction: column; gap: 10px; }
+        .histo-item {
+            display: flex; align-items: center; gap: 14px;
+            background: #1e1e1e; border-radius: 8px; padding: 10px 14px;
+            cursor: pointer; transition: background .2s;
+        }
+        .histo-item:hover { background: #252525; }
+        .histo-item img { width: 50px; height: 75px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+        .histo-item .histo-info { flex: 1; }
+        .histo-item .histo-titre { font-size: 14px; font-weight: 500; }
+        .histo-item .histo-date  { font-size: 12px; color: #777; margin-top: 4px; }
+        .histo-item .histo-play  { color: #e50914; font-size: 20px; }
+
+        .empty-msg { color: #555; font-size: 14px; padding: 20px 0; }
+
+        footer { text-align: center; padding: 30px; color: #555; font-size: 13px; border-top: 1px solid #222; margin-top: 20px; }
