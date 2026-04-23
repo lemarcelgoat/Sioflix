@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['pseudo'])) {
-    header('Location: php/profile.php?error=CI.');
+    header('Location: php/profile.php?error=not_connect');
     exit();
 }
 ?>

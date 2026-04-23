@@ -31,6 +31,6 @@ $id = $bdd->lastInsertId();
 $_SESSION['user_id'] = $id;
 $_SESSION['pseudo']  = $pseudo;
 
-header("Location: accueil.php");
+header("Location: ../index.php");
 exit();
 ?>

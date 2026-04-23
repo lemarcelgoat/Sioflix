@@ -6,7 +6,7 @@ session_start();
 $isConnected = isset($_SESSION['pseudo']) && isset($_SESSION['user_id']);
 
 if ($isConnected) {
-    // Charger les données
+
     require_once 'bdd.php';
 
     // Favoris
@@ -154,11 +154,26 @@ function retirerFavori(btn, id) {
         <a href="../index.php"><img src="../img/logo.png" alt="logo" style="width:100px"></a>
     </div>
 
-    <?php if (!empty($_GET['error'])): ?>
-    <div class="error-box">
-        <span class="error-icon">✕</span>
-        <span><?= htmlspecialchars($_GET['error']) ?></span>
-    </div>
+    <?php
+    $errorMessages = [
+        'not_connect' => "Veuillez vous connecter pour accéder à cette page.",
+        'user_not_found' => "Utilisateur introuvable.",
+        'unknown' => "Une erreur inconnue est survenue."
+    ];
+
+    $errorCode = $_GET['error'] ?? null;
+    if ($errorCode && isset($errorMessages[$errorCode])) {
+        $message = $errorMessages[$errorCode];
+    } elseif ($errorCode) {
+        $message = $errorMessages['unknown'];
+    }
+    ?>
+
+    <?php if (!empty($message)): ?>
+        <div class="error-box">
+            <span class="error-icon">✕</span>
+            <span><?= htmlspecialchars($message) ?></span>
+        </div>
     <?php endif; ?>
 
     <div class="tabs">
