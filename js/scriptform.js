@@ -21,4 +21,4 @@ function signup() {
     
     btnSignup.classList.add('active');
     btnLogin.classList.remove('active');
-};
+}; 
