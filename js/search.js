@@ -118,4 +118,4 @@ function resetResults() {
     noResults.classList.add('hidden');
     defaultMsg.style.display = 'block';
     clearBtn.style.display = 'none';
-}
+} 
