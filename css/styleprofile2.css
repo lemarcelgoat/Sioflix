@@ -1,64 +1,325 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #141414; color: #fff; font-family: 'Segoe UI', sans-serif; min-height: 100vh; display: block; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .profil-hero {
-            background: linear-gradient(to bottom, #000 0%, #141414 100%);
-            padding: 100px 5% 40px;
-            display: flex; align-items: center; gap: 30px;
-        }
-        .avatar {
-            width: 90px; height: 90px; border-radius: 50%;
-            background: #e50914; display: flex; align-items: center;
-            justify-content: center; font-size: 38px; flex-shrink: 0;
-        }
-        .profil-info h1 { font-size: 2rem; font-weight: bold; }
-        .profil-info p  { color: #aaa; font-size: 14px; margin-top: 6px; }
-        .btn-logout-profil {
-            margin-left: auto; background: transparent; border: 1.5px solid #e50914;
-            color: #e50914; padding: 9px 20px; border-radius: 6px;
-            text-decoration: none; font-size: 14px; white-space: nowrap;
-            transition: .2s;
-        }
-        .btn-logout-profil:hover { background: #e50914; color: #fff; }
+body {
+    min-height: 100vh;
+    display: block;
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(20, 184, 166, 0.1), transparent 18%),
+        linear-gradient(180deg, #050816 0%, #090d1a 40%, #070a12 100%);
+}
 
-        .section { padding: 10px 5% 40px; }
-        .section h2 { font-size: 1.6rem; color: orangered; margin-bottom: 18px; }
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 16px 5%;
+    background: rgba(7, 10, 20, 0.72);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+}
 
-        .grid-small {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 14px;
-        }
-        .card-fav {
-            border-radius: 6px; overflow: hidden; background: #1e1e1e;
-            cursor: pointer; transition: transform .25s, box-shadow .25s;
-            position: relative;
-        }
-        .card-fav:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(0,0,0,.7); }
-        .card-fav img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
-        .card-fav .card-title { padding: 7px 10px; font-size: 12px; color: #ccc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .card-fav .remove-fav {
-            position: absolute; top: 6px; right: 6px;
-            background: rgba(229,9,20,.85); border: none; border-radius: 50%;
-            width: 26px; height: 26px; color: #fff; font-size: 13px;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: .2s;
-        }
-        .card-fav .remove-fav:hover { background: #e50914; transform: scale(1.15); }
+#logo img {
+    height: 42px;
+    display: block;
+    filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.32));
+}
 
-        .histo-list { display: flex; flex-direction: column; gap: 10px; }
-        .histo-item {
-            display: flex; align-items: center; gap: 14px;
-            background: #1e1e1e; border-radius: 8px; padding: 10px 14px;
-            cursor: pointer; transition: background .2s;
-        }
-        .histo-item:hover { background: #252525; }
-        .histo-item img { width: 50px; height: 75px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
-        .histo-item .histo-info { flex: 1; }
-        .histo-item .histo-titre { font-size: 14px; font-weight: 500; }
-        .histo-item .histo-date  { font-size: 12px; color: #777; margin-top: 4px; }
-        .histo-item .histo-play  { color: #e50914; font-size: 20px; }
+#menu {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-        .empty-msg { color: #555; font-size: 14px; padding: 20px 0; }
+#menu a,
+#menu span {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text);
+    text-decoration: none;
+}
 
-        footer { text-align: center; padding: 30px; color: #555; font-size: 13px; border-top: 1px solid #222; margin-top: 20px; }
+#menu svg {
+    transition: transform .2s ease, filter .2s ease;
+}
+
+#menu a:hover svg {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 0 14px rgba(139, 92, 246, 0.3));
+}
+
+.profil-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 88px 5% 42px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background:
+        radial-gradient(circle at left, rgba(139, 92, 246, 0.16), transparent 30%),
+        linear-gradient(180deg, rgba(10, 16, 32, 0.95), rgba(7, 10, 20, 0.7));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profil-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.55), rgba(20, 184, 166, 0.55), transparent);
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.96), rgba(20, 184, 166, 0.88));
+    box-shadow: 0 18px 40px rgba(139, 92, 246, 0.24);
+}
+
+.profil-info {
+    min-width: 0;
+}
+
+.profil-info h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.profil-info p {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.btn-logout-profil {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 14px;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    font-weight: 700;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.btn-logout-profil:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 77, 109, 0.14);
+    border-color: rgba(255, 77, 109, 0.26);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.section {
+    padding: 28px 5% 10px;
+}
+
+.section h2 {
+    margin-bottom: 18px;
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.grid-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.card-fav {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    background: rgba(10, 16, 32, 0.74);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.card-fav:hover {
+    transform: translateY(-4px);
+    border-color: rgba(139, 92, 246, 0.28);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.32);
+}
+
+.card-fav img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.card-fav .card-title {
+    padding: 12px 12px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-fav .remove-fav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 77, 109, 0.92);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.22);
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.card-fav .remove-fav:hover {
+    transform: scale(1.08);
+    filter: brightness(1.05);
+}
+
+.histo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.histo-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: rgba(10, 16, 32, 0.68);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.histo-item:hover {
+    transform: translateY(-2px);
+    background: rgba(14, 20, 38, 0.84);
+    border-color: rgba(20, 184, 166, 0.22);
+}
+
+.histo-item img {
+    width: 52px;
+    height: 78px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.histo-item .histo-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.histo-item .histo-titre {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.histo-item .histo-date {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.histo-item .histo-play {
+    color: rgba(20, 184, 166, 0.95);
+    font-size: 1.2rem;
+    padding-left: 8px;
+}
+
+.empty-msg {
+    color: var(--muted);
+    font-size: 0.98rem;
+    padding: 16px 0 10px;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 28px 5% 36px;
+    text-align: center;
+    color: var(--muted-2);
+    font-size: 0.92rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 860px) {
+    .profil-hero {
+        flex-wrap: wrap;
+    }
+
+    .btn-logout-profil {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 620px) {
+    header {
+        padding: 14px 16px;
+    }
+
+    .profil-hero {
+        padding: 74px 16px 28px;
+        gap: 16px;
+    }
+
+    .section {
+        padding: 22px 16px 10px;
+    }
+
+    .grid-small {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+
+    .histo-item {
+        padding: 10px 12px;
+    }
+
+    .histo-item img {
+        width: 46px;
+        height: 69px;
+    }
+}
